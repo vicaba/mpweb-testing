@@ -2,12 +2,16 @@
 
 namespace MpwebUnit\Example;
 
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Mpweb\Example\DummyClass;
 use PHPUnit_Framework_TestCase;
 
 final class DummyTest extends PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @var DummyClass
+     */
     private $dummy;
 
     /**
@@ -30,6 +34,14 @@ final class DummyTest extends PHPUnit_Framework_TestCase
     public function shouldReturnTrue()
     {
         self::assertTrue($this->dummy->getTrue(), "Dummy::getTrue method should return true");
+    }
+
+    /** @test */
+    public function shouldReturnAnException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $this->dummy->getException();
     }
 
 }

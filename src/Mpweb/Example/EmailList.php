@@ -18,4 +18,9 @@ class EmailList
         return $this->list[$index];
     }
 
+    public function length()
+    {
+        return count($this->list);
+    }
+
 }

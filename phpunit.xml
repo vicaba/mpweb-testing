@@ -18,4 +18,10 @@
             <directory>test/MpwebUnit/Example</directory>
         </testsuite>
     </testsuites>
+
+    <testsuites>
+        <testsuite name="mock-examples">
+            <directory>test/MpwebUnit/MockExamples</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>

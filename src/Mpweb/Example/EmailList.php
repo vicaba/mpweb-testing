@@ -1,5 +1,4 @@
 <?php
-
 namespace Mpweb\Example;
 
 

@@ -1,7 +1,6 @@
 <?php
-
-
 namespace Mpweb\Example;
+
 
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 

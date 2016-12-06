@@ -1,7 +1,5 @@
 <?php
-
 namespace Mpweb\Example;
-
 
 
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
@@ -13,11 +11,11 @@ class Email
 
     public function __construct($email)
     {
-       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-           throw new InvalidArgumentException("$email is not a valid email address");
-       }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException("$email is not a valid email address");
+        }
 
-       $this->email = $email;
+        $this->email = $email;
     }
 
     public function getEmail()

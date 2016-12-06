@@ -8,6 +8,6 @@ interface UserRepository
     /**
      * @return User | null
      */
-    public function save(User $user): User;
+    public function save(User $user);
 
 }

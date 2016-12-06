@@ -18,7 +18,7 @@ class CreateUserUseCase
 
         $userIsNull = $user == null;
         if ($userIsNull) {
-            throw new Exception("The user cannot be created"); // Replace with a specific domain exception
+            throw new \Exception("The user cannot be created"); // Replace with a specific domain exception
         };
 
         return $user;

@@ -24,4 +24,11 @@
             <directory>test/MpwebUnit/MockExamples</directory>
         </testsuite>
     </testsuites>
+
+    <testsuites>
+        <testsuite name="blog">
+            <directory>test/MpwebUnit/Blog</directory>
+        </testsuite>
+    </testsuites>
+
 </phpunit>

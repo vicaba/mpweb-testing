@@ -31,4 +31,10 @@
         </testsuite>
     </testsuites>
 
+    <testsuites>
+        <testsuite name="fizzbuzz">
+            <directory>test/MpwebUnit/FizzBuzz</directory>
+        </testsuite>
+    </testsuites>
+
 </phpunit>

@@ -6,7 +6,7 @@ namespace Mpweb\FizzBuzz\Solver;
 abstract class Solver
 {
 
-    private $nextSolver;
+    protected $nextSolver;
 
     public abstract function solve($input);
 

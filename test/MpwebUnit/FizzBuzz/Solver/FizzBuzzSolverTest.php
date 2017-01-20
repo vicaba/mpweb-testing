@@ -3,6 +3,8 @@
 namespace MpwebUnit\FizzBuzz\Solver;
 
 
+use Mpweb\FizzBuzz\Solver\FizzBuzzSolver;
+
 class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
 {
 

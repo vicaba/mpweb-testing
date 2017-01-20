@@ -12,6 +12,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
     const BUZZ_WORD = "buzz";
 
+    const FIZZ_BUZZ_WORD = "fizzbuzz";
+
     private $fizzBuzz;
 
     private $number;
@@ -52,6 +54,16 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->thenItShouldReturnBuzz();
     }
 
+    /**
+     * @test
+     * @dataProvider numberDivisibleByThreeAndFiveProvider
+     */
+    public function shouldReturnFizzBuzzForNumbersThatCanBeDividedByThreeAndFive($number)
+    {
+        $this->givenANumber($number);
+        $this->thenItShouldReturnFizzBuzz();
+    }
+
     public function numberDivisibleByThreeProvider()
     {
         return [
@@ -70,6 +82,13 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [5], [10], [20], [35], [40], [50], [55], [80], [110], [160]
+        ];
+    }
+
+    public function numberDivisibleByThreeAndFiveProvider()
+    {
+        return [
+            [15], [30], [45], [60], [75], [90], [105]
         ];
     }
 
@@ -94,6 +113,12 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
         $result = $this->fizzBuzz->solve($this->number);
         $this->assertEquals(self::BUZZ_WORD, $result);
+    }
+
+    private function thenItShouldReturnFizzBuzz()
+    {
+        $result = $this->fizzBuzz->solve($this->number);
+        $this->assertEquals(self::FIZZ_BUZZ_WORD, $result);
     }
 
 }

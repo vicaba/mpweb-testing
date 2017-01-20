@@ -10,6 +10,7 @@ class FizzBuzz
 
     public function solve($number) {
         if ($number % 3 == 0) return self::FIZZ;
+        return (string) $number;
     }
 
 }

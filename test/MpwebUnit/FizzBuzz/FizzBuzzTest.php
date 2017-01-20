@@ -10,6 +10,8 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
     const FIZZ_WORD = "fizz";
 
+    const BUZZ_WORD = "buzz";
+
     private $fizzBuzz;
 
     private $number;
@@ -17,6 +19,37 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->fizzBuzz = new FizzBuzz();
+    }
+
+    /**
+     * @test
+     * @dataProvider numberDivisibleByThreeProvider
+     */
+    public function shouldReturnFizzForNumbersThatCanBeDividedByThree($number)
+    {
+        $this->givenANumber($number);
+        $this->thenItShouldReturnFizz();
+    }
+
+
+    /**
+     * @test
+     * @dataProvider numberNotDivisibleByThreeProvider
+     */
+    public function shouldReturnTheNumberIfItIsNotDivisibleByThree($number)
+    {
+        $this->givenANumber($number);
+        $this->thenItShouldReturnTheNumber();
+    }
+
+    /**
+     * @test
+     * @dataProvider numberDivisibleByFiveProvider
+     */
+    public function shouldReturnBuzzForNumbersThatCanBeDividedByFive($number)
+    {
+        $this->givenANumber($number);
+        $this->thenItShouldReturnBuzz();
     }
 
     public function numberDivisibleByThreeProvider()
@@ -33,14 +66,11 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider numberDivisibleByThreeProvider
-     */
-    public function shouldReturnFizzForNumbersThatCanBeDividedByThree($number)
+    public function numberDivisibleByFiveProvider()
     {
-        $this->givenANumber($number);
-        $this->thenItShouldReturnFizz();
+        return [
+            [5], [10], [20], [35], [40], [50], [55], [80], [110], [160]
+        ];
     }
 
     private function givenANumber($number)
@@ -54,20 +84,16 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(self::FIZZ_WORD, $result);
     }
 
-    /**
-     * @test
-     * @dataProvider numberNotDivisibleByThreeProvider
-     */
-    public function shouldReturnTheNumberIfItIsNotDivisibleByThree($number)
-    {
-        $this->givenANumber($number);
-        $this->thenItShouldReturnTheNumber();
-    }
-
     private function thenItShouldReturnTheNumber()
     {
         $result = $this->fizzBuzz->solve($this->number);
         $this->assertEquals((string) $this->number, $result);
+    }
+
+    private function thenItShouldReturnBuzz()
+    {
+        $result = $this->fizzBuzz->solve($this->number);
+        $this->assertEquals(self::BUZZ_WORD, $result);
     }
 
 }

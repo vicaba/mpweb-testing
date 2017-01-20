@@ -24,4 +24,5 @@ class GenericSolver implements Solver
     {
         // TODO: Implement setNext() method.
     }
+
 }

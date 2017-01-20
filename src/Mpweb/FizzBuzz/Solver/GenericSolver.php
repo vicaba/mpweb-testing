@@ -3,7 +3,7 @@
 namespace Mpweb\FizzBuzz\Solver;
 
 
-class GenericSolver implements Solver
+class GenericSolver extends Solver
 {
 
     const FIZZ = "fizz";

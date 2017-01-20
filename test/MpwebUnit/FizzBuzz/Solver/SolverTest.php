@@ -14,7 +14,7 @@ class SolverTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->solver = $this->createMock(Solver::class);
+        $this->solver = $this->getMockForAbstractClass(Solver::class);
     }
 
     /** @test */
@@ -38,7 +38,6 @@ class SolverTest extends \PHPUnit_Framework_TestCase
     private function thenItShouldBeKeptAsNext()
     {
         $hasNext = $this->solver->hasNext();
-
         $this->assertTrue($hasNext);
     }
 

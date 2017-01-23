@@ -8,7 +8,7 @@ class FizzBuzzSolver extends Solver
 
     public function __construct()
     {
-        $this->setNext(new BuzzSolver())->setNext(new FizzSolver());
+        $this->setNext(new GenericSolver())->setNext(new BuzzSolver())->setNext(new FizzSolver());
     }
 
     public function solve($input)

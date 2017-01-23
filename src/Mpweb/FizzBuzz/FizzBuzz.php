@@ -3,20 +3,21 @@
 namespace Mpweb\FizzBuzz;
 
 
+use Mpweb\FizzBuzz\Solver\FizzBuzzSolver;
+
 class FizzBuzz
 {
 
-    const FIZZ = "fizz";
+    private $solver;
 
-    const BUZZ = "buzz";
+    public function __construct()
+    {
+        $this->solver = new FizzBuzzSolver();
+    }
 
-    const FIZZBUZZ = "fizzbuzz";
-    
-    public function solve($number) {
-        if ($number % 5 == 0 && $number % 3 == 0) return self::FIZZBUZZ;
-        if ($number % 3 == 0) return self::FIZZ;
-        if ($number % 5 == 0) return self::BUZZ;
-        return (string) $number;
+    public function solve($number)
+    {
+        return $this->solver->solve($number);
     }
 
 }

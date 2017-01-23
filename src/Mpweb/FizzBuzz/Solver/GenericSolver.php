@@ -15,7 +15,7 @@ class GenericSolver extends Solver
             $stack = $this->nextSolver->solve($input);
         }
 
-        if (empty($stack)) return ($stack . (string) $input);
+        if (empty($stack)) return ($stack . (string)$input);
 
         return $stack;
     }

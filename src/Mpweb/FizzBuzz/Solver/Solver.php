@@ -13,6 +13,7 @@ abstract class Solver
     public function setNext(Solver $solver)
     {
         $this->nextSolver = $solver;
+        return $this->nextSolver;
     }
 
     public function hasNext()

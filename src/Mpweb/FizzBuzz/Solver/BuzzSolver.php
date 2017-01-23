@@ -10,6 +10,13 @@ class BuzzSolver extends Solver
 
     public function solve($input)
     {
-        if ($input % 5 == 0) return self::BUZZ;
+        $stack = "";
+
+        if ($this->hasNext()) {
+            $stack = $this->nextSolver->solve($input);
+        }
+        if ($input % 5 == 0) return $stack . self::BUZZ;
+
+        return $stack;
     }
 }

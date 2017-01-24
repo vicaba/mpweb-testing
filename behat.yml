@@ -1,0 +1,13 @@
+default:
+    autoload:
+        - %paths.base%/test/MpwebIntegration
+
+    suites:
+        example:
+            paths:
+                - %paths.base%/test/MpwebIntegration/Example/Feature
+            contexts:
+                - MpwebIntegration\Example\Context\ExampleContext
+
+        formatters:
+            pretty: true

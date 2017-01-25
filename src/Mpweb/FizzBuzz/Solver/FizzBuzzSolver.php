@@ -6,14 +6,19 @@ namespace Mpweb\FizzBuzz\Solver;
 class FizzBuzzSolver extends Solver
 {
 
-    public function __construct()
+    public function __construct($solvers = [])
     {
-        $this->setNext(new GenericSolver())->setNext(new BuzzSolver())->setNext(new FizzSolver());
+
+        if ($solvers == null || empty($solvers)) {
+            return $this;
+        }
+
+        //$this->setNext(new GenericSolver())->setNext(new BuzzSolver())->setNext(new FizzSolver());
     }
 
     public function solve($input)
     {
         if ($this->hasNext()) return $this->nextSolver->solve($input);
-
+        return "";
     }
 }

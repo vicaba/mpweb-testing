@@ -19,6 +19,10 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
 
     const FIZZ = "Fizz";
 
+    const BUZZ = "Buzz";
+
+    const COMPOSITE_RESULT = self::FIZZ . self::BUZZ;
+
     protected function setUp()
     {
         $this->solver = $this->getMockForAbstractClass(Solver::class);
@@ -45,6 +49,14 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
         $this->givenThatThereIsASingleSolver();
         $this->whenGettingTheFizzBuzzResult();
         $this->thenTheResultShouldBeTheOneFromTheSingleSolver();
+    }
+
+    /** @test */
+    public function shouldGetTheResultWhenThereAreMoreThanOneSolver()
+    {
+        $this->givenThatThereIsMoreThanOneSolver();
+        $this->whenGettingTheFizzBuzzResult();
+        $this->thenTheResultShouldBeTheOneComposedFromAllSolvers();
     }
 
     private function givenThatThereAreNoSolvers()
@@ -78,6 +90,34 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
     private function thenTheResultShouldBeTheOneFromTheSingleSolver()
     {
         $this->assertEquals(self::FIZZ, $this->result);
+    }
+
+    private function givenThatThereIsMoreThanOneSolver()
+    {
+        $firstSolver = $this->getMockForAbstractClass(Solver::class);
+
+        $firstSolver
+            ->method("solve")
+            ->willReturn(self::FIZZ);
+
+        $secondSolver = $this->getMockForAbstractClass(Solver::class);
+
+        $secondSolver
+            ->method("solve")
+            ->willReturn(self::BUZZ);
+
+        $secondSolver
+            ->method("hasNext")
+            ->willReturn(true);
+
+
+        $this->solver = [$secondSolver, $firstSolver];
+
+    }
+
+    public function thenTheResultShouldBeTheOneComposedFromAllSolvers()
+    {
+        $this->assertEquals(self::COMPOSITE_RESULT, $this->result);
     }
 
 }

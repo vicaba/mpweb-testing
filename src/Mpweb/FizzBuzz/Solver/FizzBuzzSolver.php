@@ -13,6 +13,13 @@ class FizzBuzzSolver extends Solver
             return $this;
         }
 
+        $nextSolver = $this->setNext($solvers[0]);
+        array_shift($solvers);
+
+        foreach ($solvers as $solver) {
+            $nextSolver = $nextSolver->setNext($solver);
+        }
+
         //$this->setNext(new GenericSolver())->setNext(new BuzzSolver())->setNext(new FizzSolver());
     }
 

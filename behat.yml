@@ -8,6 +8,10 @@ default:
                 - %paths.base%/test/MpwebIntegration/Example/Feature
             contexts:
                 - MpwebIntegration\Example\Context\ExampleContext
-
+        fizzbuzz:
+            paths:
+                - %paths.base%/test/MpwebIntegration/FizzBuzz/Solver/Feature
+            contexts:
+                - MpwebIntegration\FizzBuzz\Solver\Context\FizzBuzzSolverContext
         formatters:
             pretty: true

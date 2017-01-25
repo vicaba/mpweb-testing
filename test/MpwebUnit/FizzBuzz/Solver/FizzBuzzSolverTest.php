@@ -110,7 +110,6 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
             ->method("hasNext")
             ->willReturn(true);
 
-
         $this->solver = [$secondSolver, $firstSolver];
 
     }

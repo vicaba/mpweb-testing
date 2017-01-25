@@ -17,6 +17,8 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
 
     const NUMBER = 24;
 
+    const FIZZ = "Fizz";
+
     protected function setUp()
     {
         $this->solver = $this->getMockForAbstractClass(Solver::class);
@@ -37,6 +39,14 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
         $this->thenTheResultShouldBeAnEmptyString();
     }
 
+    /** @test */
+    public function shouldGetTheResultForASingleSolver()
+    {
+        $this->givenThatThereIsASingleSolver();
+        $this->whenGettingTheFizzBuzzResult();
+        $this->thenTheResultShouldBeTheOneFromTheSingleSolver();
+    }
+
     private function givenThatThereAreNoSolvers()
     {
         $this->solver = null;
@@ -44,13 +54,30 @@ class FizzBuzzSolverTest extends \PHPUnit_Framework_TestCase
 
     private function whenGettingTheFizzBuzzResult()
     {
-        $this->fizzBuzz = new FizzBuzzSolver();
+        $this->fizzBuzz = new FizzBuzzSolver($this->solver);
         $this->result = $this->fizzBuzz->solve(self::NUMBER);
     }
 
     private function thenTheResultShouldBeAnEmptyString()
     {
         $this->assertEmpty($this->result);
+    }
+
+    private function givenThatThereIsASingleSolver()
+    {
+        $singleSolver = $this->getMockForAbstractClass(Solver::class);
+
+        $singleSolver
+            ->method("solve")
+            ->with(self::NUMBER)
+            ->willReturn(self::FIZZ);
+
+        $this->solver = [$singleSolver];
+    }
+
+    private function thenTheResultShouldBeTheOneFromTheSingleSolver()
+    {
+        $this->assertEquals(self::FIZZ, $this->result);
     }
 
 }

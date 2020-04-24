@@ -20,6 +20,8 @@ class FizzBuzzSolver extends Solver
             $nextSolver = $nextSolver->setNext($solver);
         }
 
+        //fwrite(STDERR, print_r($this->nextSolver,TRUE));
+
         //$this->setNext(new GenericSolver())->setNext(new BuzzSolver())->setNext(new FizzSolver());
     }
 
@@ -28,4 +30,5 @@ class FizzBuzzSolver extends Solver
         if ($this->hasNext()) return $this->nextSolver->solve($input);
         return "";
     }
+
 }
